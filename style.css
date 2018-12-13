@@ -25,3 +25,19 @@ main{
 border: 5px solid black;
 border-radius: 50%;
 }
+
+.button-2{
+    background-color: green;
+}
+
+.button-6{
+    background-color: blue;
+}
+
+.button-8{
+    background-color: red;
+}
+ 
+.button-4{
+    background-color: yellow;
+}
