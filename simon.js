@@ -1,7 +1,8 @@
 console.log("linked up!")
 const buttonNames = ["green", "blue", "red", "yellow"]
 const buttonSounds = ["assets/sounds/button-0.mp3", "assets/sounds/button-1.mp3", "assets/sounds/button-2.mp3", "assets/sounds/button-3.mp3"]
-
+let userMove = 0
+let clickCheck = false
 
 class Button {
     constructor(id, color) {
@@ -15,6 +16,17 @@ class Button {
         this.sound.play()
         console.log(this.color + "flashed")
     }
+    moveCheck() {
+        this.lightUp()
+        userMove = this.id
+        clickCheck = true
+        console.log("clicked")
+        if (userMove = game.level) {
+            game.rightAnswer()
+        } else {
+            console.log("Try again")
+        }
+    }
 }
 
 const game = {
@@ -23,7 +35,6 @@ const game = {
     buttons: [],
     moves: [],
     currentMove: 0,
-    userMove: 0,
     rightMove: 0,
     makeButtons: function (nameArray, soundArray) {
         let workingButton = 0
@@ -34,33 +45,44 @@ const game = {
             $(`.simon-${i}`).on('click', () => this.buttons[i].lightUp())
         }
     },
-    startGame: function () {
-        this.turnOffListeners()
+    startGame: function (callback) {
         this.chooseMove()
         this.playMoves()
-
+        this.waitPlayerMoves()
     },
     chooseMove: function () {
         const randomNum = Math.round((Math.random() * -3) + 3)
         currentMove = randomNum
         console.log("Chosen Move: " + currentMove)
         this.moves.push(currentMove)
-    },
-    addToMoves: function () {
-
+        this.level++
     },
     playMoves: function () {
+        setTimeout(function () { }, 2500)
         for (i = 0; i < this.moves.length; i++) {
-            const currentButton = this.moves[i]
-            console.log(this.buttons[currentButton])
+            const loopMove = this.moves[i]
+            const loopButton = this.buttons[loopMove]
+            //This second loop multiplies the delay so the buttons playback with a delay inbetween, this is fix for all the buttons
+            //playing at once. Concept detailed here: http://adripofjavascript.com/blog/drips/an-introduction-to-iffes-immediately-invoked-function-expressions.html
             const playLoop = function (i) {
-                setTimeout(() => this.buttons[currentButton].lightUp(), 2000 * i)
+                setTimeout(() => loopButton.lightUp(), 2000 * i)
             }
             playLoop(i)
         }
     },
-    getPlayerMoves: function () {
 
+    waitPlayerMoves: function () {
+        for (let i = 0; i < 4; i++) {
+            $(`.simon-${i}`).on('click', () => this.buttons[i].moveCheck())
+        }
+
+    },
+
+    rightAnswer: function () {
+        console.log("Great Job!")
+        this.chooseMove()
+        this.playMoves()
+        this.waitPlayerMoves()
     },
     turnOnListeners: function () {
         for (let i = 0; i < 4; i++) {
@@ -75,5 +97,4 @@ const game = {
 
 }
 game.makeButtons(buttonNames, buttonSounds)
-const testArray = [0, 2, 1, 1, 3, 1, 0, 0, 1]
-game.moves = testArray
+$(".button-1").on('click', () => game.startGame())
