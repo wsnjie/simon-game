@@ -30,14 +30,15 @@ const game = {
             workingButton.sound = new Audio(soundArray[i])
             this.buttons.push(workingButton)
             $(`.simon-${i}`).on('click', () => this.buttons[i].lightUp())
-            console.log(`Button ${i}, Color: ${this.buttons[i].color} is added`)
         }
     },
     startGame: function () {
 
     },
     chooseButton: function () {
-
+        const randomNum = Math.round((Math.random() * -3) + 3)
+        console.log(randomNum)
+        this.buttons[randomNum].lightUp()
     },
     addToMoves: function () {
 
