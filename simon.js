@@ -9,7 +9,7 @@ class Button {
     }
 
     lightUp() {
-        $(`.simon-${this.id}`).fadeOut(100).fadeIn(100)
+        $(`.simon-${this.id}`).fadeOut(50).fadeIn(50)
         console.log(this.color + "flashed")
     }
 }
@@ -44,18 +44,3 @@ const game = {
 
 }
 game.makeButtons(buttonNames)
-
-// const makeButtons = function (array) {
-//     let workingButton = null
-//     for (let i = 0; i < 4; i++) {
-//         workingButton = new Button(i, array[i])
-//         console.log(workingButton)
-//         game.buttons.push(workingButton)
-//     }
-
-// }
-
-// makeButtons(buttonNames)
-// game.buttons = [greenButton, blueButton, redButton, yellowButton]
-
-// $('.simon-0').on('click', () => greenButton.lightUp())

@@ -10,6 +10,7 @@ main{
     width: 150px;
     background-color: blue;
     border: 1px black solid;
+    padding: 0;
 }
 .rows{
     display: flex;
