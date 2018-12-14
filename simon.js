@@ -7,7 +7,7 @@ class Button {
     constructor(id, color) {
         this.id = id
         this.color = color
-        this.sound = null
+        this.sound = 0
     }
 
     lightUp() {
@@ -22,9 +22,11 @@ const game = {
     highScore: 0,
     buttons: [],
     moves: [],
-    rightMove: null,
+    currentMove: 0,
+    userMove: 0,
+    rightMove: 0,
     makeButtons: function (nameArray, soundArray) {
-        let workingButton = null
+        let workingButton = 0
         for (let i = 0; i < 4; i++) {
             workingButton = new Button(i, nameArray[i])
             workingButton.sound = new Audio(soundArray[i])
@@ -33,18 +35,26 @@ const game = {
         }
     },
     startGame: function () {
+        this.turnOffListeners()
+        this.chooseMove()
+        this.playMoves()
 
     },
-    chooseButton: function () {
+    chooseMove: function () {
         const randomNum = Math.round((Math.random() * -3) + 3)
-        console.log(randomNum)
-        this.buttons[randomNum].lightUp()
+        currentMove = randomNum
+        console.log("Chosen Move: " + currentMove)
+        this.moves.push(currentMove)
     },
     addToMoves: function () {
 
     },
     playMoves: function () {
-
+        for (i = 0; i < this.moves.length; i++) {
+            const currentButton = this.moves[i]
+            console.log(this.buttons[currentButton])
+            setTimeout(() => this.buttons[currentButton].lightUp(), 1500)
+        }
     },
     getPlayerMoves: function () {
 
@@ -55,7 +65,9 @@ const game = {
         }
     },
     turnOffListeners() {
-
+        for (let i = 0; i < 4; i++) {
+            $(`.simon-${i}`).off()
+        }
     }
 
 }
