@@ -42,3 +42,17 @@ border-radius: 50%;
 .button-4{
     background-color: yellow;
 }
+
+.button-1{
+    background-color: lightgreen;
+    border: darkgreen 3px solid;
+    border-radius: 50%;
+    display: flex;
+    text-align: center;
+}
+
+.button-1 p{
+    font-size: 30px;
+    align-self: center;
+    justify-self: center;
+}
