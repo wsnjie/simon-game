@@ -53,7 +53,10 @@ const game = {
         for (i = 0; i < this.moves.length; i++) {
             const currentButton = this.moves[i]
             console.log(this.buttons[currentButton])
-            setTimeout(() => this.buttons[currentButton].lightUp(), 1500)
+            const playLoop = function (i) {
+                setTimeout(() => this.buttons[currentButton].lightUp(), 2000 * i)
+            }
+            playLoop(i)
         }
     },
     getPlayerMoves: function () {
@@ -72,3 +75,5 @@ const game = {
 
 }
 game.makeButtons(buttonNames, buttonSounds)
+const testArray = [0, 2, 1, 1, 3, 1, 0, 0, 1]
+game.moves = testArray
