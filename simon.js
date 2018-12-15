@@ -1,8 +1,10 @@
-console.log("linked up!")
 const buttonNames = ["green", "blue", "red", "yellow"]
 const buttonSounds = ["assets/sounds/button-0.mp3", "assets/sounds/button-1.mp3", "assets/sounds/button-2.mp3", "assets/sounds/button-3.mp3"]
 let userMove = 0
-let clickCheck = false
+let endOfTurn = false
+let rightMove = false
+let moveChecker = 0
+let levelCheck = 0
 
 class Button {
     constructor(id, color) {
@@ -14,23 +16,32 @@ class Button {
     lightUp() {
         $(`.simon-${this.id}`).fadeOut(50).fadeIn(50)
         this.sound.play()
-        console.log(this.color + "flashed")
     }
     moveCheck() {
-        this.lightUp()
-        userMove = this.id
-        clickCheck = true
-        console.log("clicked")
-        if (userMove = game.level) {
-            game.rightAnswer()
+        game.turnOffListeners()
+        if ((levelCheck + 1) === game.moves.length) {
+            console.log("Last turn of level")
+            levelCheck = 0
+            if (this.id === game.moves[game.level]) {
+                game.nextLevel()
+            } else {
+                console.log("Better Luck Next Time...")
+            }
         } else {
-            console.log("Try again")
+            if (this.id === game.moves[levelCheck]) {
+                console.log("Nice work")
+                levelCheck++
+                game.waitPlayerMoves()
+            } else {
+                console.log("Too bad :( ")
+            }
         }
     }
 }
 
 const game = {
     level: 0,
+    offset: 0,
     highScore: 0,
     buttons: [],
     moves: [],
@@ -45,27 +56,25 @@ const game = {
             $(`.simon-${i}`).on('click', () => this.buttons[i].lightUp())
         }
     },
-    startGame: function (callback) {
+    startGame: function () {
         this.chooseMove()
         this.playMoves()
         this.waitPlayerMoves()
     },
     chooseMove: function () {
-        const randomNum = Math.round((Math.random() * -3) + 3)
-        currentMove = randomNum
-        console.log("Chosen Move: " + currentMove)
-        this.moves.push(currentMove)
-        this.level++
+        this.currentMove = Math.round((Math.random() * -3) + 3)
+        this.moves.push(this.currentMove)
+
+
     },
     playMoves: function () {
-        setTimeout(function () { }, 2500)
         for (i = 0; i < this.moves.length; i++) {
             const loopMove = this.moves[i]
             const loopButton = this.buttons[loopMove]
             //This second loop multiplies the delay so the buttons playback with a delay inbetween, this is fix for all the buttons
             //playing at once. Concept detailed here: http://adripofjavascript.com/blog/drips/an-introduction-to-iffes-immediately-invoked-function-expressions.html
             const playLoop = function (i) {
-                setTimeout(() => loopButton.lightUp(), 2000 * i)
+                setTimeout(function () { setTimeout(() => loopButton.lightUp(), 2000 * i) }, 2500)
             }
             playLoop(i)
         }
@@ -78,8 +87,9 @@ const game = {
 
     },
 
-    rightAnswer: function () {
+    nextLevel: function () {
         console.log("Great Job!")
+        this.level++
         this.chooseMove()
         this.playMoves()
         this.waitPlayerMoves()
@@ -93,7 +103,7 @@ const game = {
         for (let i = 0; i < 4; i++) {
             $(`.simon-${i}`).off()
         }
-    }
+    },
 
 }
 game.makeButtons(buttonNames, buttonSounds)
