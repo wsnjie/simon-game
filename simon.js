@@ -1,9 +1,6 @@
 const buttonNames = ["green", "blue", "red", "yellow"]
 const buttonSounds = ["assets/sounds/button-0.mp3", "assets/sounds/button-1.mp3", "assets/sounds/button-2.mp3", "assets/sounds/button-3.mp3"]
-let userMove = 0
-let endOfTurn = false
-let rightMove = false
-let moveChecker = 0
+
 let levelCheck = 0
 
 class Button {
@@ -30,7 +27,7 @@ class Button {
             if (this.id === game.moves[game.level]) {
                 game.nextLevel()
             } else {
-                console.log("Better Luck Next Time...")
+                console.log(alert("Better Luck Next Time...")
             }
         } else {
             if (this.id === game.moves[levelCheck]) {
@@ -38,7 +35,7 @@ class Button {
                 levelCheck++
                 game.waitPlayerMoves()
             } else {
-                console.log("Too bad :( ")
+                console.log(alert("Too bad"))
             }
         }
     }
@@ -60,6 +57,7 @@ const game = {
         }
     },
     startGame: function () {
+        $(".button-1").off()
         this.chooseMove()
         this.playMoves()
         this.waitPlayerMoves()
@@ -82,14 +80,12 @@ const game = {
             playLoop(i)
         }
     },
-
     waitPlayerMoves: function () {
         for (let i = 0; i < 4; i++) {
             $(`.simon-${i}`).on('click', () => this.buttons[i].moveCheck())
         }
 
     },
-
     nextLevel: function () {
         console.log("Great Job!")
         this.level++
@@ -102,11 +98,6 @@ const game = {
             this.waitPlayerMoves()
         }
     },
-    turnOnListeners: function () {
-        for (let i = 0; i < 4; i++) {
-            $(`.simon-${i}`).on('click', () => this.buttons[i].lightUp())
-        }
-    },
     turnOffListeners: function () {
         for (let i = 0; i < 4; i++) {
             $(`.simon-${i}`).off()
@@ -114,7 +105,19 @@ const game = {
     },
     youWin: function () {
         console.log(alert("You Win!"))
+    },
+    reset: function () {
+        this.moves = []
+        this.buttons = []
+        this.makeButtons(buttonNames, buttonSounds)
+        this.level = 0
+        $("#level").html((this.level + 1))
+        levelCheck = 0
+        this.currentMove = 0
+        $(".button-1").on('click', () => this.startGame())
+        console.log("reset")
     }
 }
 game.makeButtons(buttonNames, buttonSounds)
 $(".button-1").on('click', () => game.startGame())
+$(".button-7").on('click', () => game.reset())
