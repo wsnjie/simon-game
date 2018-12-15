@@ -17,7 +17,12 @@ class Button {
         $(`.simon-${this.id}`).fadeOut(50).fadeIn(50)
         this.sound.play()
     }
+    flicker() {
+        $(`.simon-${this.id}`).fadeOut(15).fadeIn(15)
+    }
     moveCheck() {
+        this.sound.play()
+        this.flicker()
         game.turnOffListeners()
         if ((levelCheck + 1) === game.moves.length) {
             console.log("Last turn of level")
@@ -41,12 +46,10 @@ class Button {
 
 const game = {
     level: 0,
-    offset: 0,
     highScore: 0,
     buttons: [],
     moves: [],
     currentMove: 0,
-    rightMove: 0,
     makeButtons: function (nameArray, soundArray) {
         let workingButton = 0
         for (let i = 0; i < 4; i++) {
@@ -74,7 +77,7 @@ const game = {
             //This second loop multiplies the delay so the buttons playback with a delay inbetween, this is fix for all the buttons
             //playing at once. Concept detailed here: http://adripofjavascript.com/blog/drips/an-introduction-to-iffes-immediately-invoked-function-expressions.html
             const playLoop = function (i) {
-                setTimeout(function () { setTimeout(() => loopButton.lightUp(), 2000 * i) }, 2500)
+                setTimeout(function () { setTimeout(() => loopButton.lightUp(), 1000 * i) }, 2500)
             }
             playLoop(i)
         }
@@ -90,21 +93,28 @@ const game = {
     nextLevel: function () {
         console.log("Great Job!")
         this.level++
-        this.chooseMove()
-        this.playMoves()
-        this.waitPlayerMoves()
+        if (this.level === 10) {
+            this.youWin()
+        } else {
+            $("#level").html((this.level + 1))
+            this.chooseMove()
+            this.playMoves()
+            this.waitPlayerMoves()
+        }
     },
     turnOnListeners: function () {
         for (let i = 0; i < 4; i++) {
             $(`.simon-${i}`).on('click', () => this.buttons[i].lightUp())
         }
     },
-    turnOffListeners() {
+    turnOffListeners: function () {
         for (let i = 0; i < 4; i++) {
             $(`.simon-${i}`).off()
         }
     },
-
+    youWin: function () {
+        console.log(alert("You Win!"))
+    }
 }
 game.makeButtons(buttonNames, buttonSounds)
 $(".button-1").on('click', () => game.startGame())
