@@ -5,20 +5,23 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link href="https://unpkg.com/nes.css/css/nes.min.css" rel="stylesheet" />
     <link rel="stylesheet" href="style.css">
     <script defer src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
         crossorigin="anonymous">
         </script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <script defer src="simon.js"></script>
     <title>Simon Game</title>
 </head>
 
 <body>
-    <header>
+    <header class="container is-center">
         <h1>SIMON</h1>
     </header>
-    <main>
-        <div id="gameboard">
+    <main class="container with-title">
+        <p class="title">Game Space</p>
+        <div id="gameboard" class="container">
             <div class="rows row-1">
                 <div class="buttons button-1">
                     <p>Start</p>
@@ -48,11 +51,18 @@
             </div>
         </div>
     </main>
-    <aside>
-        <h1>Instructions</h1>
+    <aside class="container with-title">
+        <p class="title">Instructions</p>
+        <ul>
+            <li>Press Start!</li>
+            <li>Watch the moves and wait for the cpu light to go off.</li>
+            <li>Repeat the moves correctly and move to the next level</li>
+            <li>The cpu will play the same moves on the next level, but with one new move at the end.</li>
+            <li>Have Fun!</li>
+        </ul>
     </aside>
-    <footer>
-        <p>Copyright</p>
+    <footer class="container with-title">
+        <p class="title">Copyright</p>
     </footer>
 </body>
 

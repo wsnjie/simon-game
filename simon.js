@@ -27,7 +27,7 @@ class Button {
             if (this.id === game.moves[game.level]) {
                 game.nextLevel()
             } else {
-                console.log(alert("Better Luck Next Time..."))
+                swal("Better Luck Next Time...")
             }
         } else {
             if (this.id === game.moves[levelCheck]) {
@@ -35,7 +35,7 @@ class Button {
                 levelCheck++
                 game.waitPlayerMoves()
             } else {
-                console.log(alert("Too bad"))
+                swal("Too Bad")
             }
         }
     }
@@ -109,7 +109,7 @@ const game = {
         }
     },
     youWin: function () {
-        console.log(alert("You Win!"))
+        swal("You Win!")
     },
     reset: function () {
         this.moves = []
