@@ -48,6 +48,8 @@ const game = {
     moves: [],
     currentMove: 0,
     lightTimout: 0,
+    diffculty: 0,
+    gameTime: 1000,
     makeButtons: function (nameArray, soundArray) {
         let workingButton = 0
         for (let i = 0; i < 4; i++) {
@@ -59,6 +61,7 @@ const game = {
     },
     startGame: function () {
         $(".button-1").off()
+        this.checkLevel()
         this.chooseMove()
         this.playMoves()
         this.waitPlayerMoves()
@@ -78,10 +81,10 @@ const game = {
             //This second loop multiplies the delay so the buttons playback with a delay inbetween, this is fix for all the buttons
             //playing at once. Concept detailed here: http://adripofjavascript.com/blog/drips/an-introduction-to-iffes-immediately-invoked-function-expressions.html
             const playLoop = function (i) {
-                setTimeout(function () { setTimeout(() => loopButton.lightUp(), 1000 * i) }, 2500)
+                setTimeout(function () { setTimeout(() => loopButton.lightUp(), game.gameTime * i) }, 2500)
             }
             playLoop(i)
-            this.lightTimout = (((i) * 1000) + 3000)
+            this.lightTimout = (((i) * game.gameTime) + 3000)
         }
         setTimeout(() => this.cpuLight(false), this.lightTimout)
     },
@@ -131,6 +134,19 @@ const game = {
             $("#cpu").css("background-color", "grey")
             $("#cpu").css("box-shadow", "")
             console.log("light off")
+        }
+    },
+    checkLevel: function () {
+        this.diffculty = $(".radio:checked").attr("data-level")
+        if (this.diffculty === "easy") {
+            console.log("Setting Level to Easy")
+            this.gameTime = 1500
+
+        } else if (this.diffculty === "fun") {
+            console.log("Setting Level to Fun")
+        } else {
+            console.log("Setting Level to Tough")
+            this.gameTime = 650
         }
     }
 
