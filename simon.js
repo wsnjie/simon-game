@@ -27,7 +27,7 @@ class Button {
             if (this.id === game.moves[game.level]) {
                 game.nextLevel()
             } else {
-                console.log(alert("Better Luck Next Time...")
+                console.log(alert("Better Luck Next Time..."))
             }
         } else {
             if (this.id === game.moves[levelCheck]) {
@@ -47,6 +47,7 @@ const game = {
     buttons: [],
     moves: [],
     currentMove: 0,
+    lightTimout: 0,
     makeButtons: function (nameArray, soundArray) {
         let workingButton = 0
         for (let i = 0; i < 4; i++) {
@@ -61,6 +62,7 @@ const game = {
         this.chooseMove()
         this.playMoves()
         this.waitPlayerMoves()
+
     },
     chooseMove: function () {
         this.currentMove = Math.round((Math.random() * -3) + 3)
@@ -69,6 +71,7 @@ const game = {
 
     },
     playMoves: function () {
+        setTimeout(() => this.cpuLight(true), 500)
         for (i = 0; i < this.moves.length; i++) {
             const loopMove = this.moves[i]
             const loopButton = this.buttons[loopMove]
@@ -78,7 +81,9 @@ const game = {
                 setTimeout(function () { setTimeout(() => loopButton.lightUp(), 1000 * i) }, 2500)
             }
             playLoop(i)
+            this.lightTimout = (((i) * 1000) + 3000)
         }
+        setTimeout(() => this.cpuLight(false), this.lightTimout)
     },
     waitPlayerMoves: function () {
         for (let i = 0; i < 4; i++) {
@@ -116,8 +121,20 @@ const game = {
         this.currentMove = 0
         $(".button-1").on('click', () => this.startGame())
         console.log("reset")
+    },
+    cpuLight: function (check) {
+        if (check === true) {
+            $("#cpu").css("background-color", "lightcoral")
+            console.log("light on")
+        } else if (check === false) {
+            $("#cpu").css("background-color", "grey")
+            console.log("light off")
+        }
     }
+
+
+
 }
 game.makeButtons(buttonNames, buttonSounds)
-$(".button-1").on('click', () => game.startGame())
+$(".button-1").on('click', () => game.startGame(game.cpuLight))
 $(".button-7").on('click', () => game.reset())
