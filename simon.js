@@ -125,9 +125,11 @@ const game = {
     cpuLight: function (check) {
         if (check === true) {
             $("#cpu").css("background-color", "lightcoral")
+            $("#cpu").css("box-shadow", "0px 0px 10px 10px pink")
             console.log("light on")
         } else if (check === false) {
             $("#cpu").css("background-color", "grey")
+            $("#cpu").css("box-shadow", "")
             console.log("light off")
         }
     }
