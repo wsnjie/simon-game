@@ -5,8 +5,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <!-- NES.css Stylesheet for retro video-game styling -->
     <link href="https://unpkg.com/nes.css/css/nes.min.css" rel="stylesheet" />
     <link rel="stylesheet" href="style.css">
+    <!-- Jquery and SweetAlert cdn links -->
     <script defer src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
         crossorigin="anonymous">
         </script>
@@ -24,12 +26,14 @@
         <div id="gameboard" class="container">
             <div class="rows row-1">
                 <div class="buttons button-1">
-                    <p>Start</p>
+                    <div><button type="button" class="btn is-primary">Start</button></div>
                 </div>
                 <div class="buttons button-2 simon-0"></div>
                 <div class="buttons button-3">
-                    <p>CPU</p>
-                    <div id="cpu"></div>
+                    <div id="cpu-container">
+                        <p>CPU</p>
+                        <div id="cpu"></div>
+                    </div>
                 </div>
             </div>
             <div class="rows row-2">
@@ -45,7 +49,8 @@
                 <div class="buttons button-6 simon-1"></div>
             </div>
             <div class="rows row-3">
-                <div class="buttons button-7">Reset</div>
+                <div class="buttons button-7">
+                    <button type="button" class="btn">Reset</button></div>
                 <div class="buttons button-8 simon-2"></div>
                 <div class="buttons button-9"></div>
             </div>
