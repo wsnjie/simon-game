@@ -1,9 +1,39 @@
+
+body{
+    height: 100vh;
+    width: 100vw;
+    margin: 0;
+    display: grid;
+    grid-template-rows: 100px 75px 1fr 40px;
+    grid-template-columns: 3fr 1fr;
+    grid-template-areas: 
+    "header header"
+    "main aside"
+    "main aside"
+    "footer footer"
+}
 h1, h2{
     text-align: center;
 }
-
-main{
+header{
+    grid-area: header;
+    background-color: blue;
+}
+ main{
+    grid-area: main;
+    background-color: pink;
     margin: 0 auto;
+}
+ aside{
+    grid-area: aside;
+    background-color: aqua;
+}
+ footer{
+    grid-area: footer;
+    background-color: yellow;
+} 
+main{
+
 }
 .buttons{
     height: 150px;
