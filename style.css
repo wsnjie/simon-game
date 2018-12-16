@@ -28,9 +28,13 @@ header{
     grid-area: footer;
 } 
 main{
-
-/*Gameboard butttons, 3x3 board which includes 4 simon buttons*/
+display:flex;
+flex-direction: column;
+justify-items: center;
+align-items: center;
 }
+    /*Gameboard butttons, 3x3 board which includes 4 simon buttons*/
+
 .buttons{
     height: 150px;
     width: 150px;
@@ -116,4 +120,9 @@ border-radius: 50%;
     display: flex;
     align-items: center;
     justify-items: center;
+}
+
+#difficulty{
+    height: 75px;
+    width: 450px;
 }
