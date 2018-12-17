@@ -29,9 +29,16 @@ header{
 } 
 main{
 display:flex;
-flex-direction: column;
-justify-items: center;
-align-items: center;
+    flex-direction: column;
+    justify-items: center;
+    align-items: center;
+}
+
+#game-screen{
+    display:flex;
+    flex-direction: column;
+    justify-items: center;
+    align-items: center;
 }
     /*Gameboard butttons, 3x3 board which includes 4 simon buttons*/
 
@@ -125,4 +132,9 @@ border-radius: 50%;
 #difficulty{
     height: 75px;
     width: 450px;
+}
+
+#high-score{
+    text-align: center;
+    font-size: 30px;
 }

@@ -23,56 +23,69 @@
     </header>
     <main class="container with-title">
         <p class="title">Game Space</p>
-        <div id="gameboard" class="container">
-            <div class="rows row-1">
-                <div class="buttons button-1">
-                    <div><button type="button" class="btn is-primary">Start</button></div>
+        <div id="game-screen">
+            <div id="gameboard" class="container">
+                <div class="rows row-1">
+                    <div class="buttons button-1">
+                        <div><button type="button" class="btn is-primary">Start</button></div>
+                    </div>
+                    <div class="buttons button-2 simon-0"></div>
+                    <div class="buttons button-3">
+                        <div id="cpu-container">
+                            <p>CPU</p>
+                            <div id="cpu"></div>
+                        </div>
+                    </div>
                 </div>
-                <div class="buttons button-2 simon-0"></div>
-                <div class="buttons button-3">
-                    <div id="cpu-container">
-                        <p>CPU</p>
-                        <div id="cpu"></div>
+                <div class="rows row-2">
+                    <div class="buttons button-4 simon-3"></div>
+                    <div class="buttons button-5">
+                        <div>
+                            <p>Current Level:</p>
+                        </div>
+                        <div>
+                            <p id="level">1</p>
+                        </div>
+                    </div>
+                    <div class="buttons button-6 simon-1"></div>
+                </div>
+                <div class="rows row-3">
+                    <div class="buttons button-7">
+                        <button type="button" class="btn">Reset</button></div>
+                    <div class="buttons button-8 simon-2"></div>
+                    <div class="buttons button-9">
+                        <div>
+                            <p>High Score:</p>
+                        </div>
+                        <div>
+                            <p id="high-score">1</p>
+                        </div>
                     </div>
                 </div>
             </div>
-            <div class="rows row-2">
-                <div class="buttons button-4 simon-3"></div>
-                <div class="buttons button-5">
-                    <div>
-                        <p>Current Level:</p>
-                    </div>
-                    <div>
-                        <p id="level">1</p>
-                    </div>
-                </div>
-                <div class="buttons button-6 simon-1"></div>
-            </div>
-            <div class="rows row-3">
-                <div class="buttons button-7">
-                    <button type="button" class="btn">Reset</button></div>
-                <div class="buttons button-8 simon-2"></div>
-                <div class="buttons button-9"></div>
-            </div>
-        </div>
-        <div id="difficulty" class="container with-title">
-            <p class="title">Difficulty</p>
-            <label>
-                <input type="radio" class="radio" name="difficulty" data-level="easy" />
-                <span>Easy
-                </span>
+            <div id="difficulty" class="container with-title">
+                <p class="title">Difficulty</p>
                 <label>
-                    <input type="radio" class="radio" name="difficulty" data-level="fun" checked />
-                    <span>Fun</span>
-                </label>
-                <label>
-                    <input type="radio" class="radio" name="difficulty" data-level="tough" />
-                    <span>Tough</span>
-                </label>
+                    <input type="radio" class="radio" name="difficulty" data-level="easy" />
+                    <span>Easy
+                    </span>
+                    <label>
+                        <input type="radio" class="radio" name="difficulty" data-level="fun" checked />
+                        <span>Fun</span>
+                    </label>
+                    <label>
+                        <input type="radio" class="radio" name="difficulty" data-level="tough" />
+                        <span>Tough</span>
+                    </label>
+            </div>
+
         </div>
+
+
     </main>
     <aside class="container with-title">
         <p class="title">Instructions</p>
+
         <ul>
             <li>Press Start!</li>
             <li>Watch the moves and wait for the cpu light to go off.</li>
@@ -82,7 +95,7 @@
         </ul>
     </aside>
     <footer class="container with-title">
-        <p class="title">Copyright</p>
+        <p class="title">Made by William Njie</p>
     </footer>
 </body>
 

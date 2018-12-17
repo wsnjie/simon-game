@@ -28,6 +28,7 @@ class Button {
                 game.nextLevel()
             } else {
                 swal("Better Luck Next Time...")
+                game.setHighScore()
             }
         } else {
             if (this.id === game.moves[levelCheck]) {
@@ -36,6 +37,7 @@ class Button {
                 game.waitPlayerMoves()
             } else {
                 swal("Too Bad")
+                game.setHighScore()
             }
         }
     }
@@ -50,6 +52,7 @@ const game = {
     lightTimout: 0,
     diffculty: 0,
     gameTime: 1000,
+    levelDifficultuy: 10,
     makeButtons: function (nameArray, soundArray) {
         let workingButton = 0
         for (let i = 0; i < 4; i++) {
@@ -97,8 +100,9 @@ const game = {
     nextLevel: function () {
         console.log("Great Job!")
         this.level++
-        if (this.level === 10) {
+        if (this.level === this.levelDifficultuy) {
             this.youWin()
+            this.setHighScore()
         } else {
             $("#level").html((this.level + 1))
             this.chooseMove()
@@ -119,9 +123,12 @@ const game = {
         this.buttons = []
         this.makeButtons(buttonNames, buttonSounds)
         this.level = 0
+        levelCheck = 0
         $("#level").html((this.level + 1))
         levelCheck = 0
         this.currentMove = 0
+        this.levelDifficultuy = 10
+        this.gameTime = 1000
         $(".button-1").on('click', () => this.startGame())
         console.log("reset")
     },
@@ -147,7 +154,12 @@ const game = {
         } else {
             console.log("Setting Level to Tough")
             this.gameTime = 650
+            this.levelDifficultuy = 100
         }
+    },
+    setHighScore: function () {
+        this.highScore = this.level + 1
+        $("#high-score").html((this.highScore))
     }
 
 
