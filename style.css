@@ -12,6 +12,19 @@ body{
     "main aside"
     "footer footer"
 }
+
+@media only screen and (max-width: 500px) {
+  body {
+   
+    grid-template-rows: 65px 1fr auto auto;
+    grid-template-columns: 1fr;
+    grid-template-areas: 
+    "header"
+    "main"
+    "aside"
+    "footer"
+}
+  }
 h1, h2{
     text-align: center;
 }
@@ -23,6 +36,28 @@ header{
 }
  aside{
     grid-area: aside;
+}
+@media only screen and (max-width: 500px) {
+    header{
+        padding: 0px;
+        margin: 0px;
+    }
+    h1{
+        font-size: 20px;
+        padding: 0px;
+        margin: 0px;
+    }
+    main{
+        width: 100vw;
+    }
+    aside{
+        width: 100vw;
+        height: 100px;
+    }
+    #ins-content{
+        display: none;
+    }
+    
 }
  footer{
     grid-area: footer;
@@ -43,8 +78,8 @@ display:flex;
     /*Gameboard butttons, 3x3 board which includes 4 simon buttons*/
 
 .buttons{
-    height: 150px;
-    width: 150px;
+    height: 140px;
+    width: 140px;
     padding: 0;
 }
 .rows{
