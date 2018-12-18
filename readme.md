@@ -8,10 +8,10 @@ Link to Github Pages deployment: [Here!](https://wsnjie.github.io/simon-game/)
 
 Technologies
 ==============
-*HTML5, CSS3, Javascript, jQuery
-*Design: [NES.CSS](https://nostalgic-css.github.io/NES.css/) which was made using [Bulma](https://bulma.io/documentation/overview/start/), SweetAlert
-*[Trello](https://trello.com/b/oNRqbXzW/project-1) for planing and stories
-*[Soundjay](https://www.soundjay.com/button-sounds-1.html) for audio files for buttons.
++HTML5, CSS3, Javascript, jQuery
++Design: [NES.CSS](https://nostalgic-css.github.io/NES.css/) which was made using [Bulma](https://bulma.io/documentation/overview/start/), SweetAlert
++[Trello](https://trello.com/b/oNRqbXzW/project-1) for planing and stories
++[Soundjay](https://www.soundjay.com/button-sounds-1.html) for audio files for buttons.
 
 Features
 ===========
