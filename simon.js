@@ -2,6 +2,7 @@ const buttonNames = ["green", "blue", "red", "yellow"]
 const buttonSounds = ["assets/sounds/button-0.mp3", "assets/sounds/button-1.mp3", "assets/sounds/button-2.mp3", "assets/sounds/button-3.mp3"]
 
 let levelCheck = 0
+let cpuTurn = false
 
 class Button {
     constructor(id, color) {
@@ -18,26 +19,30 @@ class Button {
         $(`.simon-${this.id}`).fadeOut(15).fadeIn(15)
     }
     moveCheck() {
-        this.sound.play()
-        this.flicker()
-        game.turnOffListeners()
-        if ((levelCheck + 1) === game.moves.length) {
-            console.log("Last turn of level")
-            levelCheck = 0
-            if (this.id === game.moves[game.level]) {
-                game.nextLevel()
-            } else {
-                swal("Better Luck Next Time...")
-                game.setHighScore()
-            }
+        if (cpuTurn === true) {
+            return
         } else {
-            if (this.id === game.moves[levelCheck]) {
-                console.log("Nice work")
-                levelCheck++
-                game.waitPlayerMoves()
+            this.sound.play()
+            this.flicker()
+            game.turnOffListeners()
+            if ((levelCheck + 1) === game.moves.length) {
+                console.log("Last turn of level")
+                levelCheck = 0
+                if (this.id === game.moves[game.level]) {
+                    game.nextLevel()
+                } else {
+                    swal("Better Luck Next Time...")
+                    game.setHighScore()
+                }
             } else {
-                swal("Too Bad")
-                game.setHighScore()
+                if (this.id === game.moves[levelCheck]) {
+                    console.log("Nice work")
+                    levelCheck++
+                    game.waitPlayerMoves()
+                } else {
+                    swal("Too Bad")
+                    game.setHighScore()
+                }
             }
         }
     }
@@ -77,6 +82,7 @@ const game = {
 
     },
     playMoves: function () {
+        cpuTurn = true
         setTimeout(() => this.cpuLight(true), 500)
         for (i = 0; i < this.moves.length; i++) {
             const loopMove = this.moves[i]
@@ -90,6 +96,9 @@ const game = {
             this.lightTimout = (((i) * game.gameTime) + 3000)
         }
         setTimeout(() => this.cpuLight(false), this.lightTimout)
+        setTimeout(function () {
+            cpuTurn = false
+        }, this.lightTimout)
     },
     waitPlayerMoves: function () {
         for (let i = 0; i < 4; i++) {
