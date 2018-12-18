@@ -16,17 +16,17 @@ Technologies
 Features
 ===========
 * Three difficulty levels
-** Easy: More time between each computer move to give the user more time to memorize the moves. User wins after level 10.
-** Fun: The baseline of about 1 second per move for 10 levels.
-** Tough: Just over half a second between moves and the user can play up to level 100, if they want.
+  *Easy: More time between each computer move to give the user more time to memorize the moves. User wins after level 10.
+  * Fun: The baseline of about 1 second per move for 10 levels.
+  * Tough: Just over half a second between moves and the user can play up to level 100, if they want.
 
 * CPU Indicator Light
-** Lets the user know then the computer is playing versus when it is their turn to repeat the sequence
-**Input is locked during CPU playback, so the indicator is there to help remind the user not to try and enter moves.
+  * Lets the user know then the computer is playing versus when it is their turn to repeat the sequence
+  *Input is locked during CPU playback, so the indicator is there to help remind the user not to try and enter moves.
 
 * High Score
-** High score is saved after an incorrect move is entered by the user
-** On Easy and Fun modes, maximum high-score is 10. On Tough mode, maximum is 100.
+  * High score is saved after an incorrect move is entered by the user
+  * On Easy and Fun modes, maximum high-score is 10. On Tough mode, maximum is 100.
 
 
 Wireframe
