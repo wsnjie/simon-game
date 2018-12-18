@@ -13,7 +13,7 @@ body{
     "footer footer"
 }
 
-@media only screen and (max-width: 500px) {
+@media only screen and (max-width: 550px) {
   body {
    
     grid-template-rows: 65px 1fr auto auto;
@@ -37,7 +37,7 @@ header{
  aside{
     grid-area: aside;
 }
-@media only screen and (max-width: 500px) {
+@media only screen and (max-width: 550px) {
     header{
         padding: 0px;
         margin: 0px;
@@ -52,10 +52,17 @@ header{
     }
     aside{
         width: 100vw;
-        height: 100px;
+        height: auto;
     }
-    #ins-content{
+    .ins-content{
         display: none;
+    }
+
+    .ins-content-show{
+        display: inline;
+    }
+    .aside-expand{
+        height: auto;
     }
     
 }
