@@ -6,7 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <!-- NES.css Stylesheet for retro video-game styling -->
-    <link href="https://unpkg.com/nes.css/css/nes.min.css" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css?family=Press+Start+2P" rel="stylesheet">
+    <link href="nes.css" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
     <!-- Jquery and SweetAlert cdn links -->
     <script defer src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
@@ -18,16 +19,16 @@
 </head>
 
 <body>
-    <header class="container is-center">
+    <header class="nes-container is-center">
         <h1>SIMON</h1>
     </header>
-    <main class="container with-title">
+    <main class="nes-container with-title">
         <p class="title">Game Space</p>
         <div id="game-screen">
-            <div id="gameboard" class="container">
+            <div id="gameboard" class="nes-container">
                 <div class="rows row-1">
                     <div class="buttons button-1">
-                        <div><button type="button" class="btn is-primary">Start</button></div>
+                        <div><button type="button" class="nes-btn is-primary">Start</button></div>
                     </div>
                     <div class="buttons button-2 simon-0"></div>
                     <div class="buttons button-3">
@@ -51,7 +52,7 @@
                 </div>
                 <div class="rows row-3">
                     <div class="buttons button-7">
-                        <button type="button" class="btn">Reset</button></div>
+                        <button type="button" class="nes-btn">Reset</button></div>
                     <div class="buttons button-8 simon-2"></div>
                     <div class="buttons button-9">
                         <div>
@@ -63,18 +64,18 @@
                     </div>
                 </div>
             </div>
-            <div id="difficulty" class="container with-title">
+            <div id="difficulty" class="nes-container with-title">
                 <p class="title">Difficulty</p>
                 <label>
-                    <input type="radio" class="radio" name="difficulty" data-level="easy" />
+                    <input type="radio" class="radio nes-radio" name="difficulty" data-level="easy" />
                     <span>Easy
                     </span>
                     <label>
-                        <input type="radio" class="radio" name="difficulty" data-level="fun" checked />
+                        <input type="radio" class="radio nes-radio" name="difficulty" data-level="fun" checked />
                         <span>Fun</span>
                     </label>
                     <label>
-                        <input type="radio" class="radio" name="difficulty" data-level="tough" />
+                        <input type="radio" class="radio nes-radio" name="difficulty" data-level="tough" />
                         <span>Tough</span>
                     </label>
             </div>
@@ -83,9 +84,9 @@
 
 
     </main>
-    <aside class="container with-title">
+    <aside class="nes-container with-title">
         <p class="title">Instructions</p>
-        <i class="icon heart"></i>
+        <i class="nes-icon heart"></i>
         <ul class="ins-content">
             <li>Select your difficulty :)</li>
             <li>Press Start!</li>
@@ -95,7 +96,7 @@
             <li>Have Fun!</li>
         </ul>
     </aside>
-    <footer class="container with-title">
+    <footer class="nes-container with-title">
         <p class="title">Made by William Njie</p>
     </footer>
 </body>

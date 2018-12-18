@@ -37,3 +37,7 @@ This particular whiteboard was very rudimentary, but the basic design and functi
 
 Future Devlopment
 ============
+*Clean up page responsiveness
+*Smoother animations for play moves
+*More exciting animation for a win
+*Ability to share high score on social media

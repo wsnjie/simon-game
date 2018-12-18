@@ -177,7 +177,7 @@ const game = {
 game.makeButtons(buttonNames, buttonSounds)
 $(".button-1").on('click', () => game.startGame(game.cpuLight))
 $(".button-7").on('click', () => game.reset())
-$(".icon.heart").click(
+$(".nes-icon.heart").click(
     function () {
         $(".ins-content").toggleClass("ins-content-show")
         $(".aside").toggleClass("aside-expand")
